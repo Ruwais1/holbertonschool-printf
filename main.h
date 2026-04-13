@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+#include <stddef.h>
 
 /**
  * struct specifier_handler - maps a format specifier to its handler function
@@ -18,5 +19,8 @@ typedef struct specifier_handler
 int _putchar(char character);
 int _printf(const char *format, ...);
 int (*get_print_func(char specifier))(va_list);
+int print_char(va_list args);
+int print_string(va_list args);
+int print_percent(va_list args);
 
 #endif

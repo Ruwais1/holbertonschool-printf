@@ -2,27 +2,25 @@
 
 /**
  * get_print_func - selects the correct function to perform the printing
- * @s: the format specifier character (c, s, or %)
+ * @specifier: the format specifier character passed as an argument
  *
  * Return: a pointer to the function that corresponds to the specifier,
  * or NULL if no match is found.
  */
-int (*get_print_func(char s))(va_list)
+int (*get_print_func(char specifier))(va_list)
 {
-	convert_match match[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-		{NULL, NULL}
+	specifier_handler_t match[] = {
+		{'c', print_char},
+		{'s', print_string},
+		{'%', print_percent},
+		{'\0', NULL}
 	};
 	int i = 0;
 
-	while (match[i].id != NULL)
+	while (match[i].handler != NULL)
 	{
-		if (match[i].id[0] == s)
-		{
-			return (match[i].f);
-		}
+		if (match[i].specifier == specifier)
+			return (match[i].handler);
 		i++;
 	}
 
