@@ -1,0 +1,77 @@
+.TH _PRINTF 3 2026-04-15 "holbertonschool-printf" ""
+
+.SH NAME
+_printf \- formatted output conversion
+
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.nf
+.BI "int _printf(const char *" format ", ...);"
+.fi
+
+.SH DESCRIPTION
+The
+.BR _printf ()
+function produces output according to a format string.
+It writes output to the standard output stream, stdout.
+
+The
+.I format
+string may contain ordinary characters, which are printed unchanged,
+and conversion specifiers introduced by the percent sign (%).
+
+This implementation supports the following conversion specifiers:
+
+.TP
+.B %c
+Print a single character.
+
+.TP
+.B %s
+Print a string.
+If the argument is NULL, the string "(null)" is printed.
+
+.TP
+.B %%
+Print a percent sign.
+
+.TP
+.B %d, %i
+The int argument is converted to signed decimal notation.
+
+If an unknown conversion specifier is encountered,
+.BR _printf ()
+prints the percent sign followed by the unknown specifier character.
+
+If the format string ends with a trailing percent sign,
+.BR _printf ()
+returns \-1.
+
+This implementation does not support flag characters, field width,
+precision, or length modifiers.
+
+.SH RETURN VALUE
+Upon successful completion,
+.BR _printf ()
+returns the number of characters printed, excluding the terminating null byte.
+
+If
+.I format
+is NULL, or if the format string ends with a trailing percent sign,
+.BR _printf ()
+returns \-1.
+
+.SH EXAMPLES
+.EX
+_printf("Character: %c\\n", 'A');
+_printf("Message: %s\\n", "Hello");
+_printf("Progress: 100%%\\n");
+_printf("Number: %d\\n", 42);
+_printf("Integer: %i\\n", -7);
+_printf("Unknown: %r\\n");
+.EE
+
+.SH SEE ALSO
+.BR write (2),
+.BR printf (3)
