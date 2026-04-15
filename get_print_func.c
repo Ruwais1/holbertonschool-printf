@@ -13,6 +13,8 @@ int (*get_print_func(char specifier))(va_list)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'d', print_int},
+		{'i', print_int},
 		{'\0', NULL}
 	};
 	int i = 0;
