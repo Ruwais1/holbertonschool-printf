@@ -15,6 +15,7 @@ int (*get_print_func(char specifier))(va_list)
 		{'%', print_percent},
 		{'d', print_int},
 		{'i', print_int},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 	int i = 0;
